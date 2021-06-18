@@ -99,4 +99,8 @@ DerivedData/
 db.sqlite
 .swiftpm
 
+*.sh
+
+
+
 >>>>>>> master

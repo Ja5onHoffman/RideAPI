@@ -19,19 +19,18 @@ final class Club: Model, Content {
     
     @Field(key: "type")
     var type: String
-        
-    @Field(key: "contact")
-    var contact: Contact
     
     @Field(key: "website")
     var website: URL
     
+    @Children(for: \.$club)
+    var contact: [Contact]
+    
     init() { }
     
-    init(id: UUID? = nil, name: String, type: String, contact: Contact, website: URL) {
+    init(id: UUID? = nil, name: String, type: String, website: URL) {
         self.name = name
         self.type = type
-        self.contact = contact
         self.website = website
     }
 }
