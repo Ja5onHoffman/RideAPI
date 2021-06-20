@@ -22,15 +22,16 @@ struct ClubsController: RouteCollection {
     }
     
     func createClub(_ req: Request) throws -> EventLoopFuture<Club> {
-        let data = try req.content.decode(Club.self)
+        
+        let data = try req.content.decode(CreateClubData.self)
         let club = try Club(name: data.name, type: data.type, website: data.website)
         return club.save(on: req.db).map { club }
     }
 }
 
-
-//struct CreateClubData: Content {
-//    let name: String
-//    let type: String
-//    let website: URL
-//}
+struct CreateClubData: Content {
+    let name: String
+    let type: String
+    let website: URL
+//    let contacts: [Contact]?
+}

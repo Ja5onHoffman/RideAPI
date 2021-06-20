@@ -14,7 +14,7 @@ struct CreateClub: Migration {
             .id()
             .field("name", .string, .required)
             .field("type", .string, .required)
-            .field("contacts", .array(of: .custom(Contact.self)))
+//            .field("contacts", .array(of: .custom(Contact.self)))
 //            .field("contacts", .custom([Contact]()), .required)
             .field("website", .string, .required)
             .create()

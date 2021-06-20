@@ -9,7 +9,7 @@ import Fluent
 import Vapor
 
 final class Contact: Model, Content {
-    static let schema = "contact"
+    static let schema = "contacts"
     
     @ID
     var id: UUID?
@@ -29,12 +29,12 @@ final class Contact: Model, Content {
     @Field(key: "website")
     var website: String
     
-    @Parent(key: "clubID")
-    var club: Club
+    @OptionalParent(key: "clubID")
+    var club: Club?
     
     init() { }
     
-    init(id: UUID? = nil, firstName: String, lastName: String, phone: String, email: String, website: String, clubID: Club.IDValue) {
+    init(id: UUID? = nil, firstName: String, lastName: String, phone: String, email: String, website: String, clubID: Club.IDValue? = nil) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -44,17 +44,3 @@ final class Contact: Model, Content {
         self.$club.id = clubID
     }
 }
-
-
-/*
- Contact
- 
- First name
- Last name
- phone number
- email
- instagram
- website
- Club
- 
- */

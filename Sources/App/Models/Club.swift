@@ -24,7 +24,7 @@ final class Club: Model, Content {
     var website: URL
     
     @Children(for: \.$club)
-    var contact: [Contact]
+    var contacts: [Contact]
     
     init() { }
     
@@ -34,21 +34,3 @@ final class Club: Model, Content {
         self.website = website
     }
 }
-
-
-
-
-/*
- Club
- 
- Name
- Type - Shop, Club, Team, Event
- Contact - Own model
- Website
- 
- 
- 
- 
- 
- 
- */

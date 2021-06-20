@@ -12,12 +12,12 @@ struct CreateContact: Migration {
             .field("phone", .string)
             .field("email", .string, .required)
             .field("website", .string)
-//            .field("clubID", .uuid, .references("club", "contacts"))
-            .field("clubID", .uuid, .required, .references("club", "id"))
+            .field("clubID", .uuid, .references("club", "id"))
             .create()
     }
     
     func revert(on database: Database) -> EventLoopFuture<Void> {
-      database.schema("contact").delete()
+      database.schema("contacts").delete()
     }
 }
+
