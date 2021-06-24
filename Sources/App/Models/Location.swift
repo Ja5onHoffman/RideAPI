@@ -31,22 +31,21 @@ final class Location: Model, Content {
     @Field(key: "lat")
     var lat: Double
     
-    @Field(key: "long")
-    var long: Double
+    @Field(key: "lon")
+    var lon: Double
     
-    @OptionalParent(key: "ride")
-    var ride: Ride?
+    @Children(for: \.$location)
+    var rides: [Ride]
     
     init() {}
     
-    init(id: UUID? = nil, street: String, city: String, state: String, zip: String, lat: Double, long: Double, ride: Ride?) {
+    init(id: UUID? = nil, street: String, city: String, state: String, zip: String, lat: Double, lon: Double) {
         self.street = street
         self.city = city
         self.state = state
         self.zip = zip
         self.lat = lat
-        self.long = long
-        self.ride = ride
+        self.lon = lon
     }
     
 }

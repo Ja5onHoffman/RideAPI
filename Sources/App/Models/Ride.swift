@@ -22,22 +22,22 @@ final class Ride: Model, Content {
     var date: Date // Convert back and forth? Includes times.
     
     @Field(key: "recurring")
-    var recurring: DateInterval
+    var recurring: Bool
     
-    @OptionalChild(for: \.$ride)
-    var location: Location?
-
     @Field(key: "type")
     var type: String
     
+    @OptionalParent(key: "locationID")
+    var location: Location?
+    
     init() {}
     
-    init(id: UUID? = nil, name: String, date: Date, recurring: DateInterval, location: Location, type: String) {
+    init(id: UUID? = nil, name: String, date: Date, recurring: Bool, type: String, locationID: Location.IDValue? = nil) {
         self.rideName = name
         self.date = date
         self.recurring = recurring
-        self.location = location
         self.type = type
+        self.$location.id = locationID
     }
 }
 

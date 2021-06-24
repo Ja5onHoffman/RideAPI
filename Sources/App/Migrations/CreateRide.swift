@@ -12,9 +12,10 @@ struct CreateRide: Migration {
         database.schema("rides")
             .id()
             .field("rideName", .string, .required)
-            .field("date", .date, .required)
+            .field("date", .datetime, .required)
             .field("recurring", .bool, .required)
             .field("type", .string, .required)
+            .field("locationID", .uuid, .references("locations", "id"))
             .create()
     }
     

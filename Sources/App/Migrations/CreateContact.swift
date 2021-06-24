@@ -1,7 +1,6 @@
 
 import Fluent
 
-
 struct CreateContact: Migration {
     
     func prepare(on database: Database) -> EventLoopFuture<Void> {

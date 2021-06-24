@@ -18,8 +18,10 @@ public func configure(_ app: Application) throws {
 
     app.migrations.add(CreateClub())
     app.migrations.add(CreateContact())
-    app.migrations.add(CreateRide())
     app.migrations.add(CreateLocation())
+    app.migrations.add(CreateRide())
+    
+    
     app.views.use(.leaf)
 
     try app.autoMigrate().wait()
